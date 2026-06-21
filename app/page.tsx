@@ -14,28 +14,49 @@ export default function HomePage() {
       {/* Top bar */}
       <header className="border-b border-[var(--line)] bg-white/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-6">
+
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--accent)] text-white shadow-sm">
               <ScanSearch className="h-5 w-5" />
             </div>
+
             <div>
               <p className="text-sm font-semibold leading-none text-[var(--ink)]">
                 ResumeScan AI
               </p>
+
               <p className="mt-1 text-xs text-[var(--ink)]/50">
                 ATS resume checker
               </p>
             </div>
           </div>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <div className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-1.5 text-xs font-medium text-[var(--ink)]/55">
-              PDF, DOCX, TXT supported
+
+          <div className="flex items-center gap-2">
+
+            <a
+              href=""
+              className="rounded-full bg-[var(--accent)] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-[var(--accent)]/90 md:px-4"
+            >
+              Made for Digital Heroes
+            </a>
+
+
+            <div className="hidden items-center gap-3 md:flex">
+
+              <div className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-3 py-1.5 text-xs font-medium text-[var(--ink)]/55">
+                PDF, DOCX, TXT supported
+              </div>
+
+
+              <div className="rounded-full bg-[var(--accent-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--accent)]">
+                Instant AI feedback
+              </div>
+
             </div>
-            <div className="rounded-full bg-[var(--accent-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--accent)]">
-              Instant AI feedback
-            </div>
+
           </div>
+
         </div>
       </header>
 
