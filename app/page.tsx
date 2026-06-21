@@ -35,7 +35,7 @@ export default function HomePage() {
           <div className="flex items-center gap-2">
 
             <a
-              href=""
+              href="https://digitalheroesco.com"
               className="rounded-full bg-[var(--accent)] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-[var(--accent)]/90 md:px-4"
             >
               Made for Digital Heroes
