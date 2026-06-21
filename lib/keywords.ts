@@ -1,0 +1,30 @@
+export const techKeywords = [
+
+"javascript",
+"typescript",
+"react",
+"next.js",
+"node",
+"express",
+"mongodb",
+"mysql",
+"sql",
+"python",
+"java",
+"c++",
+"html",
+"css",
+"tailwind",
+"git",
+"github",
+"docker",
+"aws",
+"azure",
+"firebase",
+"rest api",
+"graphql",
+"machine learning",
+"data structures",
+"algorithms"
+
+];
