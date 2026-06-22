@@ -43,7 +43,19 @@ export default function UploadBox() {
         body: formData,
       });
 
-      const data = await res.json();
+      const raw = await res.text();
+
+      let data: any = null;
+
+      try {
+        data = raw ? JSON.parse(raw) : null;
+      } catch {
+        throw new Error(
+          raw?.startsWith("<!DOCTYPE") || raw?.startsWith("<html")
+            ? "Server returned an HTML error page instead of JSON. Check your API route/server logs."
+            : raw || "Server returned an invalid response."
+        );
+      }
 
       if (!res.ok) {
         throw new Error(data?.error || "Failed to analyze resume");

@@ -4,6 +4,7 @@ import Groq from "groq-sdk";
 import { analyzeResume } from "@/lib/resumeAnalyzer";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,

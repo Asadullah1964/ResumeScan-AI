@@ -1,30 +1,31 @@
 // lib/pdfReader.ts
-export async function readPDF(buffer: ArrayBuffer) {
-  const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
 
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    "pdfjs-dist/legacy/build/pdf.worker.min.mjs",
-    import.meta.url
-  ).toString();
+export async function readPDF(arrayBuffer: ArrayBuffer): Promise<string> {
+  try {
+    const buffer = Buffer.from(arrayBuffer);
 
-  const loadingTask = pdfjs.getDocument({
-    data: buffer,
-    useWorkerFetch: false,
-  });
+    const pdfParse = (await import("pdf-parse")).default;
 
-  const pdf = await loadingTask.promise;
+    const result = await pdfParse(buffer);
 
-  let text = "";
+    const text = result.text?.trim() || "";
 
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
-    const content = await page.getTextContent();
+    if (!text) {
+      throw new Error(
+        "This PDF has no selectable text. It may be a scanned/image PDF."
+      );
+    }
 
-    text +=
-      content.items
-        .map((item: any) => ("str" in item ? item.str : ""))
-        .join(" ") + "\n";
+    return text;
+
+  } catch (error) {
+    console.error("PDF read error:", error);
+
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Unknown PDF parsing error";
+
+    throw new Error(`Failed to read PDF file: ${message}`);
   }
-
-  return text.trim();
 }
