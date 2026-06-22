@@ -36,7 +36,7 @@ export default function HomePage() {
 
             <a
               href="https://digitalheroesco.com"
-              className="rounded-full bg-[var(--accent)] px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-[var(--accent)]/90 md:px-4"
+              className="rounded-full bg-[var(--accent)] px-3 py-2 text-xs font-semibold !text-white shadow-sm transition hover:bg-[var(--accent)]/90 md:px-4"
             >
               Made for Digital Heroes
             </a>

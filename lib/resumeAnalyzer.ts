@@ -3,6 +3,7 @@ import { readDOCX } from "./docReader";
 import { cleanText } from "./textCleaner";
 import { calculateATSScore } from "./atsScore";
 import { techKeywords } from "./keywords";
+import { validateResume } from "./resumeValidator";
 
 export async function analyzeResume(file?: File, pastedText?: string) {
   let text = "";
@@ -33,6 +34,14 @@ export async function analyzeResume(file?: File, pastedText?: string) {
   }
 
   text = cleanText(text);
+  const validation = validateResume(text);
+
+
+if (!validation.isResume) {
+  throw new Error(
+    "This file does not look like a resume. Please upload a valid resume file."
+  );
+}
 
   const score = calculateATSScore(text);
   const lower = text.toLowerCase();
